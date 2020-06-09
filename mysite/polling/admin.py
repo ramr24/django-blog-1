@@ -1,3 +1,6 @@
-from django.contrib import admin
+# blogging/admin.py
 
-# Register your models here.
+from django.contrib import admin
+from polling.models import Poll
+
+admin.site.register(Poll)
