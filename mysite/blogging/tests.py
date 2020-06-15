@@ -6,6 +6,7 @@ from blogging.models import Post, Category
 import datetime
 from django.utils.timezone import utc
 
+
 class PostTestCase(TestCase):
 	fixtures = ['blogging_test_fixture.json',]
 
@@ -18,6 +19,7 @@ class PostTestCase(TestCase):
 		actual = str(p1)
 		self.assertEqual(expected, actual)
 
+
 class CategoryTestCase(TestCase):
 
 	def test_string_representation(self):
@@ -29,7 +31,7 @@ class CategoryTestCase(TestCase):
 
 class FrontEndTestCase(TestCase):
 	"""test views provided in the front-end"""
-	fixtures = ['blogging_test_fixture.json']
+	fixtures = ['blogging_test_fixture.json', ]
 
 	def setUp(self):
 		self.now = datetime.datetime.utcnow().replace(tzinfo=utc)
@@ -46,7 +48,7 @@ class FrontEndTestCase(TestCase):
 			post.save()
 
 	def test_list_only_published(self):
-		resp = self.clietn.get('/')
+		resp = self.client.get('/')
 		# the content of the rendered response is always a bytestring
 		resp_text = resp.content.decode(resp.charset)
 		self.assertTrue("Recent Posts" in resp_text)
