@@ -1,10 +1,10 @@
 # blogging/forms.py
 
 from django.forms import ModelForm
-from myapp.models import Comment
+from blogging.models import Post
 
 
-class MyCommentForm(ModelForm):
+class PostForm(ModelForm):
 	class Meta:
-		model = Comment
-		fields = ['title', 'text', 'notes']
+		model = Post
+		fields = ['title', 'text']
